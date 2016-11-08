@@ -4,12 +4,6 @@
 
 #include "Response.h"
 
-Response::Response() {
-    headers = new vector<pair<string,string>>;
-}
-Response::~Response() {
-    delete(headers);
-}
 vector<pair<string,string>> *Response::getHeaders() {
 
     return this->headers;
@@ -21,15 +15,18 @@ bool Response::setHeader(string header, string value) {
     {
         return false;
     }
-    vector<pair<string,string>>::iterator it,head = headers->begin(),tail = headers->end();
+    bool isExist = false;
+    vector<pair<string,string>>::iterator it;
     pair<string,string> key(header,value);
-    find(head,tail,key);
-    if(it != tail)
+    for(it = headers->begin();it != headers->end();it++)
     {
-        key.second = value;
-        return true;
+        if(it->first == header)
+        {
+            it->second = value;
+            isExist = true;
+        }
     }
-    else
+    if(!isExist)
     {
         pair<string,string> head(header,value);
         headers->push_back(head);

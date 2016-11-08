@@ -12,12 +12,34 @@ using namespace std;
 
 class Request {
 public:
-    inline Request();
-    inline ~Request();
+    inline Request(){
+        headers = new vector<pair<string,string>>;
+    }
+
+    inline ~Request(){
+        delete(headers);
+    }
+
+    inline Request(const string &requsetMethod, const string &requestResource);
+
+    vector<pair<string, string>> *getHeaders() const;
+
+    void setHeaders(vector<pair<string, string>> *headers);
+
+    const string &getRequsetMethod() const;
+
+    void setRequsetMethod(const string &requsetMethod);
+
+    const string &getRequestResource() const;
+
+    void setRequestResource(const string &requestResource);
+
 private:
     vector<pair<string,string>> *headers;
-    string *requsetMethod;
-    string *requestResource;
+
+    string requsetMethod;
+
+    string requestResource;
 
 };
 

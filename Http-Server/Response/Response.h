@@ -13,8 +13,12 @@
 using namespace std;
 class Response {
 public:
-    inline Response();
-    inline ~Response();
+    inline Response(){
+        headers = new vector<pair<string,string>>;
+    }
+    inline ~Response(){
+        delete(headers);
+    }
     ///to set headers value
     /// \param http response header
     /// \param header's value
