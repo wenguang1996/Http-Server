@@ -27,8 +27,15 @@ public:
     ///
     /// \return all setted headers
     vector<pair<string,string>> *getHeaders();
+    /// the resource that will be returned to client
+    /// \param Res
 private:
     vector<pair<string,string>> *headers;
+    string Res;
+public:
+    const string &getRes() const;
+
+    void setRes(const string &Res);
 
 };
 

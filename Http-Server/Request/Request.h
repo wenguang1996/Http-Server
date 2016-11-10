@@ -34,12 +34,20 @@ public:
 
     void setRequestResource(const string &requestResource);
 
+    friend ostream &operator<<(ostream &os, const Request &request);
+
+    const string &getProtocol() const;
+
+    void setProtocol(const string &protocol);
+
 private:
     vector<pair<string,string>> *headers;
 
     string requsetMethod;
 
     string requestResource;
+
+    string protocol;
 
 };
 

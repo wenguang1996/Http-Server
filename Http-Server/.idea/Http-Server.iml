@@ -2,12 +2,24 @@
 <module type="CPP_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/Response/Response.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Response/Response.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Parser/Parser.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Parser/Parser.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Request/Request.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Request/Request.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Server/Server.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Server/Server.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ResponseCreater/ResponseCreater.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ResponseCreater/ResponseCreater.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Response/Response.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Response/Response.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Linker/Linker.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Linker/Linker.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/WebLogic/WebLogic.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/WebLogic/WebLogic.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ResourceReader/ResourceReader.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ResourceReader/ResourceReader.h" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">

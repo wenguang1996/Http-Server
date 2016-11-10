@@ -35,3 +35,12 @@ bool Response::setHeader(string header, string value) {
     }
 
 }
+
+const string &Response::getRes() const {
+    return Res;
+}
+
+void Response::setRes(const string &Res) {
+    Response::Res = Res;
+}
+

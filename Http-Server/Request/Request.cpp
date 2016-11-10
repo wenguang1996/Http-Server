@@ -38,4 +38,18 @@ void Request::setRequestResource(const string &requestResource) {
     Request::requestResource = requestResource;
 }
 
+const string &Request::getProtocol() const {
+    return protocol;
+}
+
+void Request::setProtocol(const string &protocol) {
+    Request::protocol = protocol;
+}
+
+ostream &operator<<(ostream &os, const Request &request) {
+    os << "headers: " << request.headers << " requsetMethod: " << request.requsetMethod << " requestResource: "
+       << request.requestResource << " protocol: " << request.protocol;
+    return os;
+}
+
 

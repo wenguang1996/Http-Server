@@ -5,8 +5,35 @@
 #ifndef HTTP_SERVER_LINKER_H
 #define HTTP_SERVER_LINKER_H
 
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <cstring>
+#include <iostream>
 
+//the max size of request
+#define REQUEST_MAX_SIZE 1024
+
+using namespace std;
 class Linker {
+public:
+    Linker(int fd):clientSock(fd){
+        request = new char[REQUEST_MAX_SIZE];
+    }
+    ~Linker(){
+        delete request;
+    }
+
+    /// send http response
+    /// \return the send result
+    bool sendResponse();
+
+    /// get the request from client
+    /// \return string point and give it to parser to parse
+    void getRequest();
+
+private:
+    int clientSock;
+    char *request;
 
 };
 
