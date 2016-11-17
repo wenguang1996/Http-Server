@@ -9,6 +9,7 @@
 #include <netinet/in.h>
 #include <cstring>
 #include <iostream>
+#include "../Exception/ServerErrorException.h"
 
 //the max size of request
 #define REQUEST_MAX_SIZE 1024
@@ -18,6 +19,10 @@ class Linker {
 public:
     Linker(int fd):clientSock(fd){
         request = new char[REQUEST_MAX_SIZE];
+        if(request == NULL)
+        {
+            throw ServerErrorException("new memery error\n");
+        }
     }
     ~Linker(){
         delete request;
@@ -29,7 +34,7 @@ public:
 
     /// get the request from client
     /// \return string point and give it to parser to parse
-    void getRequest();
+    void getRequest() throw(ServerErrorException);
 
 private:
     int clientSock;

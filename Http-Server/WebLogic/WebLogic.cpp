@@ -5,8 +5,15 @@
 #include "WebLogic.h"
 
 string *WebLogic::doGet(Request &request, Response &response) {
-//    response.setHeader("status","404");
-//    response.setHeader("page","html");
+
+//    if(request.getRequestResource() == "/")
+//    {
+//        response.setRes("index.html");
+//    }
+//    else
+//    {
+//        response.setRes(request.getRequestResource());
+//    }
     response.setRes("index.html");
     return nullptr;
 }

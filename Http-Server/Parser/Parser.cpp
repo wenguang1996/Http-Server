@@ -2,9 +2,16 @@
 // Created by kerno on 16-11-9.
 //
 
+#include <cstring>
 #include "Parser.h"
+#include "../Exception/ServerErrorException.h"
 
 void Parser::parseRequest(char *requestStr, Request &request) {
+
+    if(strlen(requestStr) < 3)
+    {
+        throw ServerErrorException("the request is too small");
+    }
     string *requestString = new string(requestStr);
     unsigned int i = 0,j = 0;
 

@@ -6,7 +6,15 @@
 #define HTTP_SERVER_RESNOTFOUNDEXCEPTION_H
 
 
-class ResNotFoundException {
+#include <exception>
+#include <iostream>
+using namespace std;
+
+class ResNotFoundException : public exception{
+    const char *what() const throw()
+    {
+        return "ERROR! cannot find the resource!\n";
+    }
 
 };
 

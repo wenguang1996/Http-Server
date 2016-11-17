@@ -9,6 +9,8 @@
 #include <iostream>
 #include <string>
 #include <sys/stat.h>
+#include <unistd.h>
+#include <cstring>
 using  namespace std;
 
 class ResourceReader {

@@ -7,6 +7,7 @@
 #include "../Parser/Parser.h"
 #include "../WebLogic/WebLogic.h"
 #include "../ResponseCreater/ResponseCreater.h"
+#include "../Exception/ResNotFoundException.h"
 
 bool Linker::sendResponse() {
 
@@ -14,8 +15,22 @@ bool Linker::sendResponse() {
     Request *requestEn = new Request();
     Response *responseEn = new Response();
     Parser *parser = new Parser();
-    this->getRequest(),
-    parser->parseRequest(request,*requestEn);
+    try {
+        this->getRequest();
+    }catch (ServerErrorException &ex)
+    {
+        cout<<ex.what();
+        return false;
+    }
+
+    try {
+        parser->parseRequest(request,*requestEn);
+    }catch (ServerErrorException &ex)
+    {
+        throw ex;
+        return false;
+    }
+
 
     if(requestEn->getRequsetMethod() == "POST")
     {
@@ -24,20 +39,20 @@ bool Linker::sendResponse() {
     {
         webLogic->doGet(*requestEn,*responseEn);
     }
-    string *response = ResponseCreater::createResponse(*responseEn);
-    cout<<*response<<endl;
+    string *response;
+    response = ResponseCreater::createResponse(*responseEn);
+
+
+    cout<<*response;
     if(write(clientSock,response->c_str(),response->size()) != response->size())
     {
-        cerr<<"send error"<<endl;
-        exit(1);
+        throw ServerErrorException("send error");
     }
+    delete response;
 }
-void Linker::getRequest() {
+void Linker::getRequest() throw(ServerErrorException){
     if (read(clientSock,request,REQUEST_MAX_SIZE) < 0)
     {
-        cerr<<"read error"<<endl;
-        exit(1);
+        throw ServerErrorException("read error");
     }
-
-
 }

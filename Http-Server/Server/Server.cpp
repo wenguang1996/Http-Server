@@ -4,6 +4,7 @@
 
 #include "Server.h"
 #include "../Linker/Linker.h"
+#include "../Exception/ServerErrorException.h"
 
 Server::Server() {
     //create socket
@@ -18,16 +19,13 @@ Server::Server() {
 
     if(bind(sockfd,(struct sockaddr*)&serveraddr,sizeof(serveraddr)) < 0)
     {
-        cerr<<"bind error"<<endl;
-        cout<<errno<<endl;
-        exit(1);
+        throw ServerErrorException("bind error");
     }
 
     //listen
     if(listen(sockfd,SOMAXCONN) < 0)
     {
-        cerr<<"listen error"<<endl;
-        exit(1);
+        throw ServerErrorException("listen error");
     }
 
 
@@ -45,7 +43,17 @@ void Server::onListen() {
             cerr<<"accept error"<<endl;
             continue;
         }
-        Linker *linker = new Linker(fd);
-        linker->sendResponse();
+        Linker *linker
+        try {
+            Linker *linker = new Linker(fd);
+            linker->sendResponse();
+            delete linker;
+        }catch (ServerErrorException &ex)
+        {
+            cout<<ex.what();
+            delete linker;
+            continue;
+        }
+        }
+
     }
-}
