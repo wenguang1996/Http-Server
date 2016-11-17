@@ -1,0 +1,14 @@
+//
+// Created by kerno on 16-11-17.
+//
+
+#ifndef HTTP_SERVER_RESNOTFOUNDEXCEPTION_H
+#define HTTP_SERVER_RESNOTFOUNDEXCEPTION_H
+
+
+class ResNotFoundException {
+
+};
+
+
+#endif //HTTP_SERVER_RESNOTFOUNDEXCEPTION_H
